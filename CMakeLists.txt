@@ -45,6 +45,11 @@ if (WIN32)
     set(LIBRARIES_TO_LINK OpenGL32.lib)
 endif (WIN32)
 
+# adding compiler flags
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
+endif()
+
 add_executable(${PROJECT_NAME} ${SOURCES} ${RESOURCES})
 
 # adding reference to dependent projects
